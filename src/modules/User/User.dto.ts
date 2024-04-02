@@ -1,6 +1,6 @@
 export interface UserSignupDetailsDTO {
-  first_name: string;
-  last_name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
 }
@@ -33,12 +33,12 @@ export interface CreationIUsersDTO {
   password: string;
 }
 
-export interface UserSignupDetailsDTO {
-  first_name: string;
-  last_name: string;
-  email: string;
-  password: string;
-}
+// export interface UserSignupDetailsDTO {
+//   firstName: string;
+//   lastName: string;
+//   email: string;
+//   password: string;
+// }
 
 export interface ResponseDto {
   status?: boolean;
@@ -51,9 +51,3 @@ export interface ResponseDto {
   errorDetails?: any;
 }
 
-// export interface newcreateCandidateInDb {
-//   first_name: string;
-//   last_name: string;
-//   email: string;
-//   password: string;
-// }

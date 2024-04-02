@@ -19,7 +19,7 @@ export const SignUp = async (
 ): Promise<ResponseDto> => {
   try {
     let response: ResponseDto;
-    const { first_name, last_name, email, password } = userSignupDetails;
+    const { firstName, lastName, email, password } = userSignupDetails;
     const isUserPresentInDb = await UsersModel.findOne({
       where: { email },
     });
@@ -36,8 +36,8 @@ export const SignUp = async (
     const jwtToken = await generateAccessToken(userSignupDetails);
 
     const createCandidateInDb: any = await UsersModel.create({
-      first_name,
-      last_name,
+      first_name: firstName,
+      last_name: lastName,
       email,
       password: hashedPassword,
     });
@@ -50,8 +50,8 @@ export const SignUp = async (
 
     const data = {
       email,
-      first_name,
-      last_name,
+      first_name: firstName,
+      last_name: lastName,
       jwtToken,
     };
 
@@ -102,8 +102,6 @@ export const Signin = async (
     }
 
     const userDetails: UserJwtDetailsDTO = {
-      first_name: foundUserDetails.first_name,
-      last_name: foundUserDetails.last_name,
       email: foundUserDetails.email,
     };
     const jwtToken = await generateAccessToken(userDetails);

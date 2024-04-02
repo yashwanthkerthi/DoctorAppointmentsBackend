@@ -75,7 +75,8 @@ export const sendResponse = (responseData: ResponseDto) => {
 export const getResponseMessage = (message: string) => {
   const messageConstant: any = {
     SOMETHING_WRONG: "Something went wrong, Please try again",
-    VALIDATION_ERROR: "Validation error occurred, some required data is missing",
+    VALIDATION_ERROR:
+      "Validation error occurred, some required data is missing",
     VALIDATION_SUCCESS: "Validated successfully",
     EMAIL_ALREADY_EXIST: "Email ID Already Exist",
     REGISTRATION_SUCCESS: "User Registration Success",
@@ -84,13 +85,12 @@ export const getResponseMessage = (message: string) => {
     INVALID_EMAIL_OR_PASSWORD: "Please Provide Email and Password",
     INVALID_PASSWORD: "Invalid Password",
     LOGIN_SUCCESS: "Login Success",
-    USERS_FOUND: "Users found in database",
-    USERS_NOT_FOUND: "Users not found",
-    APPOINTMENT_OVERLAPPED:"Someone has already booked appointment in this time",
-    APPOINTMENT_CREATION_ERROR:"Error ocuured during appointment creation",
-    REQUIRED_TOKEN:"Token is Required",
-    REQUIRED_VALID_TOKEN:"Valid token is required"
-
+    APPOINTMENT_OVERLAPPED:
+      "Someone has already booked appointment in this time",
+    APPOINTMENT_CREATION_ERROR: "Error ocuured during appointment creation",
+    APPOINTMENT_CREATED:"Appointment booked successfully",
+    REQUIRED_TOKEN: "Token is Required",
+    REQUIRED_VALID_TOKEN: "Valid token is required",
   };
 
   return messageConstant[message] || null;

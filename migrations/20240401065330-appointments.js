@@ -30,14 +30,11 @@ module.exports = {
         type: DataTypes.DATE,
         allowNull: false,
       },
-      time: {
-        type: DataTypes.DATE,
-        allowNull: false,
-      },
+
       phone_number: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
+      },   
       
       start_time: {
         type: DataTypes.DATE,

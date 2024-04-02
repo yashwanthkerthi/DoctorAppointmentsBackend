@@ -1,7 +1,6 @@
 import { ResponseDto } from "@dtos/reusableDtos";
-// import { Request } from "@dtos/reusableDtos";
 import Joi from "joi";
-import { Response } from "express";
+import { Response, Request } from "express";
 import {
   setErrorResponse,
   getResponseMessage,
@@ -9,24 +8,25 @@ import {
 } from "@services/responseServices";
 import jwt from "jsonwebtoken";
 import * as userServices from "./User.services";
-import {
-  userLoginDetailsDTO,
-  userSignupDetailsDTO,
-} from "./User.dto";
+import { UserLoginDetailsDTO, UserSignupDetailsDTO } from "./User.dto";
+import { schemaValidation } from "@utils/helperFunctions";
+
 
 export const SignUp = async (req: Request, res: Response): Promise<any> => {
   try {
     let response: ResponseDto;
-    const userDetails: userSignupDetailsDTO = req.body;
+    const userDetails: UserSignupDetailsDTO = req.body;
     const schema = Joi.object()
       .options({})
       .keys({
-        first_name: Joi.string().required().label("First Name"),
-        last_name: Joi.string().required().label("Last Name"),
-        email: Joi.string().email().required().label("Email"),
-        password: Joi.string().required().label("Password"),
+        firstName: Joi.string().required(),
+        lastName: Joi.string().required(),
+        email: Joi.string().email().required(),
+        password: Joi.string().required(),
       });
-    const validateResult: ResponseDto =  schema.validate(userDetails);
+    const validateResult: ResponseDto = await schemaValidation(userDetails, schema);
+    // console.log("validate",validateResult);
+    
     if (!validateResult.status) {
       response = sendResponse(validateResult);
       return res.json(response);
@@ -50,14 +50,14 @@ export const SignUp = async (req: Request, res: Response): Promise<any> => {
 export const Signin = async (req: Request, res: Response): Promise<any> => {
   try {
     let response: ResponseDto;
-    const userLoginDetails: userLoginDetailsDTO = req.body;
+    const userLoginDetails: UserLoginDetailsDTO = req.body;
     const schema = Joi.object()
       .options({})
       .keys({
-        email: Joi.string().required().label("Email"),
-        password: Joi.string().required().label("Password"),
+        email: Joi.string().required(),
+        password: Joi.string().required(),
       });
-    const validateResult: ResponseDto =  schema.validate(userLoginDetails);
+    const validateResult: ResponseDto = await schemaValidation(userLoginDetails, schema);
     if (!validateResult.status) {
       response = sendResponse(validateResult);
       return res.json(response);
@@ -77,5 +77,3 @@ export const Signin = async (req: Request, res: Response): Promise<any> => {
     return res.json(result);
   }
 };
-
-

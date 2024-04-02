@@ -7,7 +7,7 @@ export const authentication = async (req: Request, res: Response, next: NextFunc
   let response: ResponseDto;
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
-  const access_token: string = process.env.JWT_SECRET_KEY;
+  const secret_key : string = process.env.JWT_SECRET_KEY;
   if (!token) {
     response = setErrorResponse({
       statusCode: 401,
@@ -17,7 +17,7 @@ export const authentication = async (req: Request, res: Response, next: NextFunc
     return res.json(response);
   }
   try {
-    const decoded = jwt.verify(token, access_token);
+    const decoded = jwt.verify(token, secret_key);
     req.user = decoded;
     next();
   } catch (error) {

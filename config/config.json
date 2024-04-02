@@ -1,7 +1,9 @@
 {
-  "username": "root",
-  "password": "@Yashwanth2000",
-  "database": "doctorappointmentdb",
-  "host": "localhost",
-  "dialect": "mysql"
-}
+  "development": {
+    "username": "root",
+    "password": "@Yashwanth2000",
+    "database": "doctorappointmentdb",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+ }

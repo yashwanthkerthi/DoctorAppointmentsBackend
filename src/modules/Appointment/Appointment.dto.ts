@@ -1,11 +1,11 @@
 export interface AppointmentFormDetailsDTO {
-  first_name: string;
-  last_name: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  phone_number: number;
+  phoneNumber: number;
   address: string;
-  date: Date;
-  start_time: Date;
+  date: string;
+  time: string;
 }
 
 export interface AppointmentDTO {
@@ -15,7 +15,7 @@ export interface AppointmentDTO {
   email: string;
   phone_number: number;
   address: string;
-  date: Date;
+  date: string;
   start_time: Date;
   end_time: Date;
 }
