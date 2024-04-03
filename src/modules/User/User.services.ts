@@ -103,6 +103,7 @@ export const Signin = async (
 
     const userDetails: UserJwtDetailsDTO = {
       email: foundUserDetails.email,
+      first_name:foundUserDetails.first_name
     };
     const jwtToken = await generateAccessToken(userDetails);
 
